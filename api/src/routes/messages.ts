@@ -19,16 +19,8 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 router.post("/", async (req: Request, res: Response) => {
-  const { content, sender, receiver } = req.body;
-
-  const message = new Message({
-    content,
-    sender,
-    receiver,
-  });
-
+  const message = new Message(req.body.message);
   await message.save();
-
   res.json(await getAll());
 });
 
