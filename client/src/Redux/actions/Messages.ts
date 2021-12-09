@@ -1,21 +1,23 @@
-import axios from "axios";
 import { Dispatch } from "redux";
+import { IMessage } from "../../Utils/interfaces";
+
+import axios from "axios";
 import ActionTypes from "./ActionTypes";
 
 export function getMessages() {
   return async (dispatch: Dispatch) => {
     const res = await axios.get("http://localhost:3001/message");
-    dispatch({ type: ActionTypes.GET_MESSAGES, payload: res.data });
+    dispatch({ type: ActionTypes.MESSAGE_GET_ALL, payload: res.data });
   };
 }
 
-export function sendMessage(message: string) {
+export function sendMessage(message: IMessage) {
   return async (dispatch: Dispatch) => {
     const res = await axios.post("http://localhost:3001/message", { message });
-    dispatch({ type: ActionTypes.SEND_MESSAGE, payload: res.data });
+    dispatch({ type: ActionTypes.MESSAGE_SEND, payload: res.data });
   };
 }
 
 export function clearMessages() {
-  return { type: ActionTypes.CLEAR_MESSAGES, payload: [] };
+  return { type: ActionTypes.MESSAGE_CLEAR, payload: [] };
 }

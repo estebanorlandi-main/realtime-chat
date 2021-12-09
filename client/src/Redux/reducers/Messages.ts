@@ -8,13 +8,16 @@ export default function messageReducer(
   action: IMessageReducer
 ) {
   switch (action.type) {
-    case ActionTypes.GET_MESSAGES:
+    case ActionTypes.MESSAGE_GET_ALL:
+      console.log("GET_ALL");
       return action.payload;
 
-    case ActionTypes.SEND_MESSAGE:
+    case ActionTypes.MESSAGE_SEND:
+      console.log("Send");
       return action.payload;
 
-    case ActionTypes.CLEAR_MESSAGES:
+    case ActionTypes.MESSAGE_CLEAR:
+      console.log("Clear");
       return [];
 
     default:
