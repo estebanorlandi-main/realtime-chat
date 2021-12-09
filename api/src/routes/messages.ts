@@ -4,8 +4,8 @@ import { IMessage } from "../utils/interface";
 
 const router = Router();
 
-router.get("/", async (req: Request, res: Response) => {
-  const messages = await Message.find({}, [
+const getAll = async () =>
+  await Message.find({}, [
     "content",
     "sender",
     "receiver",
@@ -13,6 +13,8 @@ router.get("/", async (req: Request, res: Response) => {
     "_updatedAt",
   ]);
 
+router.get("/", async (req: Request, res: Response) => {
+  const messages = await getAll();
   res.json(messages);
 });
 
@@ -27,7 +29,7 @@ router.post("/", async (req: Request, res: Response) => {
 
   await message.save();
 
-  res.json(message);
+  res.json(await getAll());
 });
 
 router.delete("/:id", async (req: Request, res: Response) => {

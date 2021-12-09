@@ -1,19 +1,26 @@
-import { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IMessage } from "../../Utils/interfaces";
 import { State } from "../../Redux/reducers";
-import { getMessages, clearMessages } from "../../Redux/actions/Messages";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../../Redux";
+import { EffectCallback, useEffect } from "react";
 
-interface Props {
-  messages: IMessage[];
-  getMessages(): void;
-  clearMessages(): void;
-}
+function ShowMessages() {
+  const dispatch = useDispatch();
 
-function ShowMessages({ messages, getMessages, clearMessages }: Props) {
-  useEffect(() => {
+  const { getMessages, clearMessages } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
+
+  const messages: IMessage[] = useSelector((state: State) => state.messages);
+
+  useEffect((): ReturnType<EffectCallback> => {
     getMessages();
-    return () => clearMessages();
+
+    return (): void => {
+      clearMessages();
+    };
   }, []);
 
   return (
@@ -27,12 +34,4 @@ function ShowMessages({ messages, getMessages, clearMessages }: Props) {
   );
 }
 
-const mapStateToProps = (state: State) => {
-  return {
-    messages: state.messages,
-  };
-};
-
-export default connect(mapStateToProps, { getMessages, clearMessages })(
-  ShowMessages
-);
+export default ShowMessages;

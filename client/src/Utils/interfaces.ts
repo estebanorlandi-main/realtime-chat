@@ -6,6 +6,6 @@ export interface IMessage {
 }
 
 export interface IMessageReducer {
-  type: string;
+  type: unknown;
   payload: IMessage[];
 }

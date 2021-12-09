@@ -1,19 +1,22 @@
-import { CLEAR_MESSAGES, GET_MESSAGES } from "../actions/Messages";
 import { IMessage, IMessageReducer } from "../../Utils/interfaces";
+import ActionTypes from "../actions/ActionTypes";
 
 const initialState: IMessage[] = [];
 
 export default function messageReducer(
   state: IMessage[] = initialState,
-  { type, payload }: IMessageReducer
+  action: IMessageReducer
 ) {
-  console.log(payload);
-  switch (type) {
-    case GET_MESSAGES:
-      return payload;
+  switch (action.type) {
+    case ActionTypes.GET_MESSAGES:
+      return action.payload;
 
-    case CLEAR_MESSAGES:
+    case ActionTypes.SEND_MESSAGE:
+      return action.payload;
+
+    case ActionTypes.CLEAR_MESSAGES:
       return [];
+
     default:
       return state;
   }
