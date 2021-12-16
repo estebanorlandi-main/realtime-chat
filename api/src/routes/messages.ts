@@ -1,6 +1,6 @@
-import { Router, Request, Response } from "express";
+import { Router, Request, Response, NextFunction } from "express";
 import Message from "../models/Message";
-import { IMessage } from "../utils/interface";
+import { io } from "../socket";
 
 const router = Router();
 
@@ -13,6 +13,13 @@ const getAll = async () =>
     "_updatedAt",
   ]);
 
+router.all("/", (req: Request, res: Response, next: NextFunction) => {
+  if (req.body) console.log(req.body);
+  if (req.params) console.log(req.params);
+  if (req.query) console.log(req.query);
+  next();
+});
+
 router.get("/", async (req: Request, res: Response) => {
   const messages = await getAll();
   res.json(messages);
@@ -21,6 +28,7 @@ router.get("/", async (req: Request, res: Response) => {
 router.post("/", async (req: Request, res: Response) => {
   const message = new Message(req.body.message);
   await message.save();
+  io.emit("new_message", { message });
   res.json(await getAll());
 });
 
