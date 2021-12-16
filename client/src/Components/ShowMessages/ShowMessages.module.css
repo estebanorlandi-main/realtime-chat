@@ -1,0 +1,36 @@
+.messages {
+  margin: 2rem 0 0 0;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 0.5rem 1rem;
+}
+
+.message {
+  position: relative;
+  max-width: max-content;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.content {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  background-color: #a63a50;
+  color: #fff;
+}
+
+.sender {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.active {
+  align-self: flex-end;
+}
+
+.active .content {
+  background-color: #00af54;
+}
