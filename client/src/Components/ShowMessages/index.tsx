@@ -14,10 +14,14 @@ function ShowMessages() {
   );
 
   const messages: IMessage[] = useSelector((state: State) => state.messages);
+  const socket = useSelector((state: State) => state.socket);
+
+  socket?.on("new_message", (data: IMessage) => {
+    getMessages();
+  });
 
   useEffect((): ReturnType<EffectCallback> => {
     getMessages();
-
     return (): void => {
       clearMessages();
     };
@@ -27,7 +31,9 @@ function ShowMessages() {
     <div>
       <ul>
         {messages.map((m, i) => (
-          <li key={i}>{m.content}</li>
+          <li key={i}>
+            {m.sender}: {m.content}
+          </li>
         ))}
       </ul>
     </div>

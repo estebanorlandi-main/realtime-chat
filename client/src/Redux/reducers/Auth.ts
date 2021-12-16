@@ -13,12 +13,10 @@ export default function authReducer(
 ) {
   switch (action.type) {
     case ActionTypes.LOGIN:
-      console.log("Login");
       return action.payload;
 
     case ActionTypes.LOGOUT:
-      console.log("Logout");
-      return { _id: "", username: "", passowrd: "" };
+      return action.payload;
 
     default:
       return state;

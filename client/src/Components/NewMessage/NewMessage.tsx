@@ -1,12 +1,15 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { bindActionCreators } from "redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { actionCreators } from "../../Redux";
+import { State } from "../../Redux/reducers";
+import { IUser } from "../../Utils/interfaces";
 
 function NewMessage() {
   const dispatch = useDispatch();
   const { sendMessage } = bindActionCreators(actionCreators, dispatch);
+  const user: IUser = useSelector((state: State) => state.session);
 
   const [content, setContent] = useState("");
 
@@ -16,13 +19,12 @@ function NewMessage() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const receiver = "asdf";
-    const sender = "asdf";
 
-    sendMessage({ content, receiver, sender });
+    if (user.username)
+      sendMessage({ content, receiver: "B", sender: user.username });
   };
 
-  return (
+  return user.username ? (
     <form onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
@@ -31,6 +33,8 @@ function NewMessage() {
         placeholder="Message"
       />
     </form>
+  ) : (
+    <></>
   );
 }
 

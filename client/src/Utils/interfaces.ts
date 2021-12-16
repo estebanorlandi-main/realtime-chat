@@ -12,9 +12,10 @@ export interface IMessageReducer {
 }
 
 export interface IUser {
-  _id: string;
   username: string;
   password: string;
+
+  _id?: string;
 }
 export interface IUserReducer {
   type: unknown;
