@@ -1,9 +1,14 @@
-export interface IMessage {
-  content: string;
-  sender: string;
-  receiver: string;
+export interface IUser {
+  _id?: number;
+  username: string;
+  avatar: string;
+}
 
-  _id?: string;
+export interface IMessage {
+  _id?: number;
+  content: string;
+  receiver: IUser;
+  sender: IUser;
 }
 
 export interface IMessageReducer {
@@ -11,12 +16,6 @@ export interface IMessageReducer {
   payload: IMessage[];
 }
 
-export interface IUser {
-  username: string;
-  password: string;
-
-  _id?: string;
-}
 export interface IUserReducer {
   type: unknown;
   payload: IUser | {};

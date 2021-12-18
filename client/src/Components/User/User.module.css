@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.avatar {
+  object-fit: cover;
+  object-position: center center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+}
+
+.username {
+  color: #fff;
+}

@@ -1,5 +1,3 @@
-import axios from "axios";
-import { Dispatch } from "redux";
 import { IUser } from "../../Utils/interfaces";
 
 import ActionTypes from "./ActionTypes";

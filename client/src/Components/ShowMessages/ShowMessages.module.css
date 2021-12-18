@@ -1,15 +1,15 @@
 .messages {
-  margin: 2rem 0 0 0;
-  background-color: #f0f0f0;
+  height: calc(100vh - 9rem);
+  overflow-y: hidden;
   display: flex;
-  flex-flow: column wrap;
-  padding: 0.5rem 1rem;
+  flex-flow: column-reverse nowrap;
+  padding: 0.5rem 0;
 }
 
 .message {
   position: relative;
-  max-width: max-content;
-  margin: 0.5rem 0;
+  max-width: 60%;
+  margin: 0.25rem 0;
   display: flex;
   flex-flow: column wrap;
 }
@@ -17,20 +17,27 @@
 .content {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-  background-color: #a63a50;
+  background-color: #333;
   color: #fff;
+  font-size: 0.9rem;
 }
 
 .sender {
   font-weight: 700;
   font-size: 0.9rem;
   margin: 0 0 0.25rem 0;
+  color: #556;
+  font-weight: lighter;
 }
 
 .active {
   align-self: flex-end;
+  margin: 1rem 0 0.25rem 0;
 }
 
 .active .content {
-  background-color: #00af54;
+  background-color: #335;
+}
+.active .sender {
+  display: none;
 }

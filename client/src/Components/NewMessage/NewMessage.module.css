@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.input,
+.input::placeholder,
+.send {
+  color: #fff;
+}
+
+.input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: #222;
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.send {
+  border: none;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+}

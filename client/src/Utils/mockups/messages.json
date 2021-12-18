@@ -1,0 +1,72 @@
+[
+  {
+    "_id": 1,
+    "content": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+    "receiver": {
+      "_id": 4,
+      "username": "ebinden3",
+      "avatar": "https://picsum.photos/1080/720?random=3"
+    },
+    "sender": {
+      "_id": 4,
+      "username": "ebinden3",
+      "avatar": "https://picsum.photos/1080/720?random=3"
+    }
+  },
+  {
+    "_id": 2,
+    "content": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+    "receiver": {
+      "_id": 4,
+      "username": "ebinden3",
+      "avatar": "https://picsum.photos/1080/720?random=3"
+    },
+    "sender": {
+      "_id": 1,
+      "username": "erosenbarg0",
+      "avatar": "https://picsum.photos/1080/720?random=0"
+    }
+  },
+  {
+    "_id": 3,
+    "content": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+    "receiver": {
+      "_id": 2,
+      "username": "jhotson1",
+      "avatar": "https://picsum.photos/1080/720?random=1"
+    },
+    "sender": {
+      "_id": 4,
+      "username": "ebinden3",
+      "avatar": "https://picsum.photos/1080/720?random=3"
+    }
+  },
+  {
+    "_id": 4,
+    "content": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+    "receiver": {
+      "_id": 4,
+      "username": "ebinden3",
+      "avatar": "https://picsum.photos/1080/720?random=3"
+    },
+    "sender": {
+      "_id": 1,
+      "username": "erosenbarg0",
+      "avatar": "https://picsum.photos/1080/720?random=0"
+    }
+  },
+  {
+    "_id": 5,
+    "content": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+    "receiver": {
+      "_id": 2,
+      "username": "jhotson1",
+      "avatar": "https://picsum.photos/1080/720?random=1"
+    },
+    "sender": {
+      "_id": 5,
+      "username": "vheppenspall4",
+      "avatar": "https://picsum.photos/1080/720?random=4"
+    }
+  }
+]

@@ -2,19 +2,15 @@ import { IUser, IUserReducer } from "../../Utils/interfaces";
 import ActionTypes from "../actions/ActionTypes";
 import users from "../../Utils/mockups/users.json";
 
-//const initialState: IUser = { username: "", avatar: "" };
-const initialState: IUser = users[0];
+const initialState: IUser[] = users;
 
-export default function authReducer(
-  state: IUser = initialState,
+export default function chatsReducer(
+  state: IUser[] = initialState,
   action: IUserReducer
 ) {
   switch (action.type) {
-    case ActionTypes.LOGIN:
+    case ActionTypes.CHATS_GET_ALL:
       return action.payload;
-
-    case ActionTypes.LOGOUT:
-      return {};
 
     default:
       return state;

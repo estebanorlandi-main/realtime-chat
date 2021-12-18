@@ -1,16 +1,27 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router";
 import { bindActionCreators } from "redux";
 
 import { actionCreators } from "../../Redux";
+import { State } from "../../Redux/reducers";
+import { IUser } from "../../Utils/interfaces";
+
+import { Input } from "../../Components/Input/Input";
+import { validatePassword, validateUsername } from "../../Utils/validate";
+
+import styles from "./Login.module.css";
 
 function Login() {
   const dispatch = useDispatch();
   const { login } = bindActionCreators(actionCreators, dispatch);
 
+  const session: IUser = useSelector((state: State) => state.session);
+
   const [user, setUser] = useState({
     username: "",
     password: "",
+    avatar: "",
   });
 
   const handleChange = ({
@@ -21,14 +32,17 @@ function Login() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    login(user);
+    if (validatePassword(user.password) && validateUsername(user.username))
+      login(user);
   };
 
-  return (
+  return session.username ? (
+    <Navigate to="/home" />
+  ) : (
     <main>
-      <h3>Login</h3>
-      <form onSubmit={handleSubmit}>
-        <input
+      <form className={styles.container} onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <Input
           name="username"
           value={user.username}
           onChange={handleChange}
@@ -36,7 +50,15 @@ function Login() {
           placeholder="Username"
         />
 
-        <input
+        <Input
+          name="avatar"
+          value={user.avatar}
+          onChange={handleChange}
+          type="text"
+          placeholder="Avatar"
+        />
+
+        <Input
           name="password"
           value={user.password}
           onChange={handleChange}

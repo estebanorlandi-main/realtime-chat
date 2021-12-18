@@ -1,13 +1,23 @@
-import NewMessage from "../../Components/NewMessage/NewMessage";
-import ShowMessages from "../../Components/ShowMessages";
+import ShowChats from "../../Components/ShowChats/ShowChats";
+import { Outlet } from "react-router";
+import { useSelector } from "react-redux";
+import { State } from "../../Redux/reducers";
+import { IUser } from "../../Utils/interfaces";
 
 function Home() {
-  return (
-    <main>
-      <h3>Messages</h3>
-      <NewMessage />
-      <ShowMessages />
-    </main>
+  const session: IUser = useSelector((state: State) => state.session);
+
+  return session.username ? (
+    <div className="home">
+      <aside>
+        <ShowChats />
+      </aside>
+      <main>
+        <Outlet />
+      </main>
+    </div>
+  ) : (
+    <h1>Login First</h1>
   );
 }
 export default Home;

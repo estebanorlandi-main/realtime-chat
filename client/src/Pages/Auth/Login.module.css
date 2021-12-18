@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+  width: 75%;
+  max-width: 320px;
+  margin: 0 auto;
+}

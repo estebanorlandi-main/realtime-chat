@@ -1,0 +1,27 @@
+[
+  {
+    "_id": 1,
+    "username": "erosenbarg0",
+    "avatar": "https://picsum.photos/1080/720?random=0"
+  },
+  {
+    "_id": 2,
+    "username": "jhotson1",
+    "avatar": "https://picsum.photos/1080/720?random=1"
+  },
+  {
+    "_id": 3,
+    "username": "smoulding2",
+    "avatar": "https://picsum.photos/1080/720?random=2"
+  },
+  {
+    "_id": 4,
+    "username": "ebinden3",
+    "avatar": "https://picsum.photos/1080/720?random=3"
+  },
+  {
+    "_id": 5,
+    "username": "vheppenspall4",
+    "avatar": "https://picsum.photos/1080/720?random=4"
+  }
+]

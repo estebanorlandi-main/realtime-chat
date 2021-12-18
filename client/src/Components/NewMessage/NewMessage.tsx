@@ -6,6 +6,8 @@ import { actionCreators } from "../../Redux";
 import { State } from "../../Redux/reducers";
 import { IUser } from "../../Utils/interfaces";
 
+import styles from "./NewMessage.module.css";
+
 function NewMessage() {
   const dispatch = useDispatch();
   const { sendMessage } = bindActionCreators(actionCreators, dispatch);
@@ -21,17 +23,23 @@ function NewMessage() {
     e.preventDefault();
 
     if (user.username)
-      sendMessage({ content, receiver: "B", sender: user.username });
+      sendMessage({
+        content,
+        receiver: { username: "", avatar: "" },
+        sender: user,
+      });
   };
 
   return user.username ? (
-    <form onSubmit={handleSubmit}>
+    <form className={`${styles.container}`} onSubmit={handleSubmit}>
       <input
+        className={`${styles.input}`}
         onChange={handleChange}
         value={content}
         type="text"
         placeholder="Message"
       />
+      <button className={`${styles.send}`}>Send</button>
     </form>
   ) : (
     <></>

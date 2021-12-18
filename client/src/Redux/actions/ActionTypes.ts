@@ -12,6 +12,9 @@ enum ActionTypes {
   LOGIN,
   SIGNUP,
   LOGOUT,
+
+  // Chats Actions
+  CHATS_GET_ALL,
 }
 
 export default ActionTypes;
