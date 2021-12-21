@@ -5,10 +5,9 @@ interface Message extends Document, IMessage {}
 
 const MessageSchema = new Schema<Message>({
   content: { type: String, required: true },
-  sender: { type: String, required: true },
-  receiver: { type: String, required: true },
-  _createdAt: { type: Date },
-  _updatedAt: { type: Date },
+  from: { type: String, required: true },
+  _createdAt: Date,
+  _updatedAt: Date,
 });
 
 MessageSchema.pre("save", function (next, done) {

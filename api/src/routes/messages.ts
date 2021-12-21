@@ -1,4 +1,5 @@
-import { Router, Request, Response, NextFunction } from "express";
+import { Router, Request, Response } from "express";
+import Chat from "../models/Chat";
 import Message from "../models/Message";
 import { io } from "../socket";
 
@@ -19,16 +20,28 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 router.post("/", async (req: Request, res: Response) => {
-  const message = new Message(req.body.message);
-  await message.save();
-  io.emit("new_message", { message });
-  res.json(await getAll());
-});
+  const { from, to, content } = req.body;
 
-router.delete("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const message = await Message.findOneAndRemove({ _id: id });
-  res.json(message);
+  const newMessage = new Message({ content, from });
+  if (!newMessage) res.json({ msg: "Error" });
+
+  const saved = await newMessage.save();
+
+  const chat = await Chat.findOneAndUpdate(
+    {
+      $or: [
+        { userA: from, userB: to },
+        { userA: to, userB: from },
+      ],
+    },
+    { $push: { messages: saved?._id } },
+    { new: true }
+  );
+
+  if (!chat) res.json({ msg: "Chat not found" });
+  res.redirect("http://localhost:3001/chat");
+
+  //io.emit("new_message", { message });
 });
 
 export default router;
