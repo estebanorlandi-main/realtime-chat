@@ -13,13 +13,6 @@ const getAll = async () =>
     "_updatedAt",
   ]);
 
-router.all("/", (req: Request, res: Response, next: NextFunction) => {
-  if (req.body) console.log(req.body);
-  if (req.params) console.log(req.params);
-  if (req.query) console.log(req.query);
-  next();
-});
-
 router.get("/", async (req: Request, res: Response) => {
   const messages = await getAll();
   res.json(messages);

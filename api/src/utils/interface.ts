@@ -5,3 +5,9 @@ export interface IMessage {
   _createdAt?: Date;
   _updatedAt?: Date;
 }
+
+export interface IUser {
+  username: string;
+  password: string;
+  avatar?: string;
+}
