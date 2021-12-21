@@ -14,6 +14,8 @@ import Navbar from "./Components/Navbar/Navbar";
 
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Auth/Login";
+import Register from "./Pages/Auth/Register";
+import Profile from "./Pages/Profile/Profile";
 
 import Chat from "./Components/Chat/Chat";
 
@@ -25,9 +27,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<Home />}>
           <Route path=":username" element={<Chat />} />
         </Route>
+
+        <Route path="/" element={<h1>Realtime Chat</h1>} />
       </Routes>
     </div>
   );

@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 
 import { actionCreators } from "../../Redux";
 import { State } from "../../Redux/reducers";
-import { IUser, IUserLogin } from "../../Utils/interfaces";
+import { IUser } from "../../Utils/interfaces";
 
 import { Input } from "../../Components/Input/Input";
 import { validatePassword, validateUsername } from "../../Utils/validate";
@@ -13,15 +13,16 @@ import { validatePassword, validateUsername } from "../../Utils/validate";
 import styles from "./Login.module.css";
 import { Link } from "react-router-dom";
 
-function Login() {
+function Register() {
   const dispatch = useDispatch();
-  const { login } = bindActionCreators(actionCreators, dispatch);
+  const { signup } = bindActionCreators(actionCreators, dispatch);
 
   const session: IUser = useSelector((state: State) => state.session);
 
-  const [user, setUser] = useState<IUserLogin>({
+  const [user, setUser] = useState({
     username: "",
     password: "",
+    avatar: "",
   });
 
   const handleChange = ({
@@ -39,7 +40,7 @@ function Login() {
       ePassword: validatePassword(user.password),
     };
 
-    if (eUser && ePassword) login(user);
+    if (eUser && ePassword) signup(user);
     else console.log("Error");
   };
 
@@ -48,13 +49,21 @@ function Login() {
   ) : (
     <main>
       <form className={styles.container} onSubmit={handleSubmit}>
-        <h2>Login</h2>
+        <h2>Register</h2>
         <Input
           name="username"
           value={user.username}
           onChange={handleChange}
           type="text"
           placeholder="Username"
+        />
+
+        <Input
+          name="avatar"
+          value={user.avatar}
+          onChange={handleChange}
+          type="text"
+          placeholder="Avatar"
         />
 
         <Input
@@ -66,14 +75,14 @@ function Login() {
         />
 
         <button className={styles.submit} type="submit">
-          Login
-        </button>
-        <Link className={styles.register} to="/register">
           Register
+        </button>
+        <Link className={styles.register} to="/login">
+          Login
         </Link>
       </form>
     </main>
   );
 }
 
-export default Login;
+export default Register;

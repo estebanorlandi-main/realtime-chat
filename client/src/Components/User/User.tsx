@@ -15,9 +15,15 @@ interface Props {
 function User({ username, avatar, onClick, toRight, toLeft }: Props) {
   return (
     <button className={styles.container} onClick={onClick}>
-      {toLeft && avatar && <img className={styles.avatar} src={avatar} />}
+      {toLeft && avatar && (
+        <img className={styles.avatar} src={avatar} alt={username} />
+      )}
+
       {username && <h3 className={styles.username}>{username}</h3>}
-      {toRight && avatar && <img className={styles.avatar} src={avatar} />}
+
+      {toRight && avatar && (
+        <img className={styles.avatar} src={avatar} alt={username} />
+      )}
     </button>
   );
 }

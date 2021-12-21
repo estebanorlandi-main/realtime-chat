@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { IMessage, IUser } from "../../Utils/interfaces";
+import { IUser } from "../../Utils/interfaces";
 import { State } from "../../Redux/reducers";
 import { EffectCallback, useEffect, useState } from "react";
 
@@ -14,16 +14,16 @@ function ShowMessages() {
 
   const user: IUser = useSelector((state: State) => state.session);
 
-  const [filtered, setFiltered] = useState<IMessage[]>([]);
+  const [filtered, setFiltered] = useState([]);
 
   useEffect((): ReturnType<EffectCallback> => {
-    setFiltered(messages.filter((m) => m.sender.username === params.username));
+    //setFiltered(messages.filter((m) => m.sender.username === params.username));
     return (): void => setFiltered([]);
   }, [params.username]);
 
   return (
     <ul className={styles.messages}>
-      {filtered.map(({ sender, content }, i) => (
+      {/*filtered.map(({ sender, content }: {}, i) => (
         <li
           key={i}
           className={`${styles.message} ${
@@ -33,7 +33,7 @@ function ShowMessages() {
           <span className={styles.sender}>{sender?.username}</span>
           <span className={styles.content}>{content}</span>
         </li>
-      ))}
+      ))*/}
     </ul>
   );
 }

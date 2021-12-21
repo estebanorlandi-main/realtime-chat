@@ -1,5 +1,5 @@
 import ShowChats from "../../Components/ShowChats/ShowChats";
-import { Outlet } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import { useSelector } from "react-redux";
 import { State } from "../../Redux/reducers";
 import { IUser } from "../../Utils/interfaces";
@@ -17,7 +17,7 @@ function Home() {
       </main>
     </div>
   ) : (
-    <h1>Login First</h1>
+    <Navigate to="/" />
   );
 }
 export default Home;

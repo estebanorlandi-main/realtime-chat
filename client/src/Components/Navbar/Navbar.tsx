@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IUser } from "../../Utils/interfaces";
 import { State } from "../../Redux/reducers/";
 
@@ -12,8 +12,13 @@ import { bindActionCreators } from "redux";
 function Navbar() {
   const user: IUser = useSelector((state: State) => state.session);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { logout } = bindActionCreators(actionCreators, dispatch);
+
+  const profile = () => {
+    navigate("/profile");
+  };
 
   return (
     <header>
@@ -21,7 +26,7 @@ function Navbar() {
         <ul className={`${styles.nav__menu}`}>
           {user.username ? (
             <User
-              onClick={() => logout()}
+              onClick={profile}
               username={user.username}
               avatar={user.avatar}
               toRight

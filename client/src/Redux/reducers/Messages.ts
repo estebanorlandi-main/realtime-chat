@@ -1,8 +1,7 @@
 import { IMessage, IMessageReducer } from "../../Utils/interfaces";
 import ActionTypes from "../actions/ActionTypes";
-import messages from "../../Utils/mockups/messages.json";
 
-const initialState: IMessage[] = messages;
+const initialState: IMessage[] = [];
 
 export default function messageReducer(
   state: IMessage[] = initialState,

@@ -3,3 +3,17 @@
   flex-flow: column nowrap;
   gap: 1rem;
 }
+
+.usersList > li {
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -0.5rem;
+  width: 0.25rem;
+  height: 100%;
+  background-color: var(--primary);
+}

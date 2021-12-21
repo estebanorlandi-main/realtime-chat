@@ -25,8 +25,8 @@ function NewMessage() {
     if (user.username)
       sendMessage({
         content,
-        receiver: { username: "", avatar: "" },
-        sender: user,
+        receiver: "x",
+        sender: user.username,
       });
   };
 
