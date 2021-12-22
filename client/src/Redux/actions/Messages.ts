@@ -11,7 +11,11 @@ export function getMessages() {
   };
 }
 
-export function sendMessage(message: IMessage) {
+export function sendMessage(message: {
+  content: string;
+  from: string;
+  to: string;
+}) {
   return async (dispatch: Dispatch) => {
     const res = await axios.post("http://localhost:3001/message", { message });
     dispatch({ type: ActionTypes.MESSAGE_SEND, payload: res.data });

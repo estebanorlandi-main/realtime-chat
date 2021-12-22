@@ -7,8 +7,11 @@ import { State } from "../../Redux/reducers";
 import { IUser } from "../../Utils/interfaces";
 
 import styles from "./NewMessage.module.css";
+import { useParams } from "react-router";
 
 function NewMessage() {
+  const { username: to = "" } = useParams();
+
   const dispatch = useDispatch();
   const { sendMessage } = bindActionCreators(actionCreators, dispatch);
   const user: IUser = useSelector((state: State) => state.session);
@@ -25,8 +28,8 @@ function NewMessage() {
     if (user.username)
       sendMessage({
         content,
-        receiver: "x",
-        sender: user.username,
+        from: user.username,
+        to,
       });
   };
 

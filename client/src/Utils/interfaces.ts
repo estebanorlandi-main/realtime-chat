@@ -23,8 +23,8 @@ export interface IUserReducer {
 export interface IMessage {
   _id?: number;
   content: string;
-  receiver: string;
-  sender: string;
+  from: IUser;
+  _createdAt: Date;
 }
 export interface IMessageReducer {
   type: unknown;
@@ -34,6 +34,8 @@ export interface IMessageReducer {
 // Chats
 export interface IChat {
   _id: string;
-  username: string;
-  avatar?: string;
+  userA: IUser;
+  userB: IUser;
+
+  messages: IMessage[];
 }

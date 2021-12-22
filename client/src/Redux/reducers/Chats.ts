@@ -1,6 +1,5 @@
 import { IChat, IUserReducer } from "../../Utils/interfaces";
 import ActionTypes from "../actions/ActionTypes";
-import users from "../../Utils/mockups/users.json";
 
 //const initialState: IUser[] = users;
 const initialState: IChat[] = [];
@@ -10,7 +9,7 @@ export default function chatsReducer(
   action: IUserReducer
 ) {
   switch (action.type) {
-    case ActionTypes.CHATS_GET_ALL:
+    case ActionTypes.CHAT_GET_ALL:
       return action.payload;
 
     default:

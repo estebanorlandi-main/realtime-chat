@@ -1,39 +1,39 @@
 import { useSelector } from "react-redux";
-import { IUser } from "../../Utils/interfaces";
+import { IChat, IMessage, IUser } from "../../Utils/interfaces";
 import { State } from "../../Redux/reducers";
 import { EffectCallback, useEffect, useState } from "react";
 
 import { useParams } from "react-router";
 
-import messages from "../../Utils/mockups/messages.json";
-
 import styles from "./ShowMessages.module.css";
 
 function ShowMessages() {
-  const params = useParams();
+  const { username } = useParams();
 
+  const chats: IChat[] = useSelector((state: State) => state.chats);
   const user: IUser = useSelector((state: State) => state.session);
 
-  const [filtered, setFiltered] = useState([]);
+  const chat = chats.filter(
+    ({ userA, userB }) =>
+      (userA.username === user.username && userB.username === username) ||
+      (userB.username === user.username && userA.username === username)
+  );
 
-  useEffect((): ReturnType<EffectCallback> => {
-    //setFiltered(messages.filter((m) => m.sender.username === params.username));
-    return (): void => setFiltered([]);
-  }, [params.username]);
+  //useEffect((): ReturnType<EffectCallback> => {}, [params.username]);
 
   return (
     <ul className={styles.messages}>
-      {/*filtered.map(({ sender, content }: {}, i) => (
+      {chat[0]?.messages?.map(({ from, content }: IMessage, i) => (
         <li
           key={i}
           className={`${styles.message} ${
-            sender?.username === user.username ? styles.active : ""
+            from?.username === user.username ? styles.active : ""
           }`}
         >
-          <span className={styles.sender}>{sender?.username}</span>
+          <span className={styles.sender}>{from?.username}</span>
           <span className={styles.content}>{content}</span>
         </li>
-      ))*/}
+      ))}
     </ul>
   );
 }

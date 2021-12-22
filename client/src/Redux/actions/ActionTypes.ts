@@ -4,6 +4,11 @@ enum ActionTypes {
   MESSAGE_SEND,
   MESSAGE_CLEAR,
 
+  // Chat Actions
+  CHAT_GET_ALL,
+  CHAT_GET_ONE,
+  CHAT_CREATE,
+
   // Socket Actions
   SOCKET_CONNECT,
   SOCKET_DISCONNECT,
@@ -12,9 +17,6 @@ enum ActionTypes {
   LOGIN,
   SIGNUP,
   LOGOUT,
-
-  // Chats Actions
-  CHATS_GET_ALL,
 }
 
 export default ActionTypes;
