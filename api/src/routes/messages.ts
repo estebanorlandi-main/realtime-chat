@@ -42,9 +42,9 @@ router.post("/", async (req: Request, res: Response) => {
 
   if (!chat) return res.status(400).json({ msg: "Chat not found" });
 
-  return res.json(chat);
+  io.emit("new_message", { saved });
 
-  //io.emit("new_message", { message });
+  return res.json(chat);
 });
 
 export default router;
