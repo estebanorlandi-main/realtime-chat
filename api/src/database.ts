@@ -16,4 +16,4 @@ async function restore(force: boolean = false) {
   console.log("DB cleared");
 }
 
-restore(true);
+restore(false);

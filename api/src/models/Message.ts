@@ -5,7 +5,7 @@ interface Message extends Document, IMessage {}
 
 const MessageSchema = new Schema<Message>({
   content: { type: String, required: true },
-  from: { type: String, required: true },
+  from: { type: Schema.Types.ObjectId, ref: "User" },
   _createdAt: Date,
   _updatedAt: Date,
 });

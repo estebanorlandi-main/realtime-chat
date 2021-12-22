@@ -2,15 +2,14 @@ import { Types } from "mongoose";
 
 export interface IMessage {
   content: string;
-  from: string;
-
+  from: Types.ObjectId;
   _createdAt?: Date;
   _updatedAt?: Date;
 }
 
 export interface IChat {
-  userA: string;
-  userB: string;
+  userA: Types.ObjectId;
+  userB: Types.ObjectId;
   messages: Types.ObjectId[];
 }
 

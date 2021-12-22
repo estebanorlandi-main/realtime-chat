@@ -4,8 +4,8 @@ import { IChat } from "../utils/interface";
 interface Chat extends Document, IChat {}
 
 const ChatSchema = new Schema<Chat>({
-  userA: { type: String, required: true },
-  userB: { type: String, required: true },
+  userA: { type: Schema.Types.ObjectId, ref: "User" },
+  userB: { type: Schema.Types.ObjectId, ref: "User" },
   messages: [{ type: Schema.Types.ObjectId, ref: "Message" }],
 });
 
